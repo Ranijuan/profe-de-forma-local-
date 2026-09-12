@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  asistente-ingles:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: teacher-de-idiomas:latest
+    container_name: teacher-de-idiomas
+
+    # Acceso a X11 para la interfaz gráfica (Linux)
+    # En Windows o macOS con Docker Desktop: comentar estos volúmenes
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./datos:/app/datos:rw
+
+    environment:
+      - DISPLAY=:0
+
+    # Permitir que la ventana sea interactiva
+    stdin_open: true
+    tty: true
+
+    # Ejecutar sin privilege escalation
+    user: root
+
+    command: >
+      python aplicacion/principal.py
+      --vueltas 2
+
+networks:
+  default:
+    name: teacher-network

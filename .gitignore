@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------------------
+#  Lo que NO se sube al repositorio
+# ---------------------------------------------------------------------------
+#  La regla es sencilla: fuera todo lo que se pueda regenerar desde el codigo
+#  que si esta aqui. Un repositorio debe llevar las instrucciones, no el
+#  resultado de haberlas seguido.
+# ---------------------------------------------------------------------------
+
+# El entorno virtual: se recrea con python -m venv entorno + pip install.
+# Son cientos de MB y ademas no sirven en otro equipo.
+entorno/
+
+# El modelo de traduccion: 82 MB que se bajan solos con
+# aplicacion/traduccion/descargar_modelo.py
+datos/modelos/
+
+# Progreso de aprendizaje del usuario: es un dato personal, no codigo.
+datos/aprendizaje.json
+
+# La DLL compilada: la genera construir.ps1 en unos segundos.
+nucleo/bin/
+
+# Restos de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Notas de continuidad entre sesiones de trabajo: son privadas.
+session-notes.md
+
+# Restos del sistema y de los editores
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
